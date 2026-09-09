@@ -1,0 +1,28 @@
+install:
+  commands:
+    - ["npm", "ci", "--include=dev"]
+
+build:
+  commands:
+    - ["npm", "run", "build"]
+    - ["cp", "-r", ".next/static", ".next/standalone/.next/static"]
+    - ["cp", "-r", "public", ".next/standalone/public"]
+    - ["rm", "-rf", "node_modules"]
+
+run:
+  command: ["node", ".next/standalone/server.js"]
+
+profile:
+  label: "Pipeline O11Y"
+  description: >-
+    End-to-end pipeline health monitoring, visualization, and alerting.
+    Tag objects with o11y to surface them in this single pane of glass.
+  icon: public/icon.svg
+
+environment_variables:
+  - name: DEFAULT_O11Y_TAG
+    value: "o11y"
+  - name: O11Y_TAG_DATABASE
+    value: "LPR_POC"
+  - name: O11Y_TAG_SCHEMA
+    value: "OPS"

@@ -1,0 +1,24 @@
+# Snowflake project hygiene — these must never reach a public repo.
+# snowflake.yml and .snowflake/ carry connection details, account identifiers,
+# and sometimes key paths.
+snowflake.yml
+.snowflake/
+
+# Node / Next.js build output
+node_modules/
+.next/
+out/
+output/
+*.tsbuildinfo
+.env
+.env.local
+
+# Local planning and agent scratch files — useful locally, not part of the product
+*.plan.md
+AGENTS.md
+prompt.md
+.cortex/
+
+# OS noise
+.DS_Store
+snowflake.log
